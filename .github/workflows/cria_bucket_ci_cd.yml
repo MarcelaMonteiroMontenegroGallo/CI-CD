@@ -3,7 +3,7 @@ name: Deploy S3 bucket
 on:
   push:
     branches:
-      - "DE-23/novo-branch"
+      - "novo-branch"
 
 jobs:
   deploy:
@@ -20,16 +20,9 @@ jobs:
           python -m pip Install --upgrade pip
           pip install -r requirements.txt
       - name: Deploy    
-      env:
-        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-        AWS_DEFAULT: ${{secrets.AWS_DEFAULT_REGION}}
-      run: |
-        python turma_2/2_integracao_continua_e_testes/1.github_actions/deploy.py
-        
-
-
-
-
-
-
+        env:
+            AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+            AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+            AWS_DEFAULT: ${{secrets.AWS_DEFAULT_REGION}}
+        run: |
+          python aula_2/deploy.py
